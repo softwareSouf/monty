@@ -1,5 +1,5 @@
 #include "monty.h"
-
+int atoi(const char *nptr);
 /**
  * _push -  pushes an element to the stack.
  * @stack: a list for the monty stack.
@@ -7,32 +7,32 @@
  *
  * Return: void.
  */
+
 void _push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *ptr = malloc(sizeof(stack_t));
-	int n;
+        stack_t *ptr = malloc(sizeof(stack_t));
+        int n;
 
-	if (ptr == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
+        if (ptr == NULL)
+        {
+                fprintf(stderr, "Error: malloc failed\n");
+                exit(EXIT_FAILURE);
+        }
 
-	if (!isdigit(push_arg[0]))
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	}
+        if (!isdigit(push_arg[0]))
+        {
+                fprintf(stderr, "L%d: usage: push integer\n", line_number);
+                exit(EXIT_FAILURE);
+        }
 
-	n = atoi(push_arg);
-	ptr->prev = NULL;
-	ptr->n = n;
-	ptr->next = *stack;
-	if (*stack != NULL)
-		(*stack)->prev = ptr;
-	*stack = ptr;
+        n = atoi(push_arg);
+        ptr->prev = NULL;
+        ptr->n = n;
+        ptr->next = *stack;
+        if (*stack != NULL)
+                (*stack)->prev = ptr;
+        *stack = ptr;
 }
-
 /**
  * _pall - prints all the values on the stack, starting from
  * the top of the stack.
