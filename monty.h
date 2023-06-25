@@ -52,9 +52,9 @@ typedef struct instruction_s
 
 /* Prototypes */
 /* Main function */
-void read_file(char *filename, stack_t **stack);
+void rfile(char *filename, stack_t **stack);
 void free_stack(stack_t *head);
-void free_stack_recursive(stack_t *head);
+void free_stack_while(stack_t *head);
 
 /* Read function */
 void (*get_function(char *line))(stack_t **stack, unsigned int line_number);

@@ -1,22 +1,24 @@
 #include "monty.h"
 
 /**
- * free_list_recursive - frees a list recursively.
+ * free_stack_while - frees a list using while loop.
  * @head: a pointer to the first node.
  *
  * Return: void.
  */
-void free_stack_recursive(stack_t *head)
+void free_stack_while(stack_t *head)
 {
-	if (head == NULL)
-		return;
+	stack_t *current = head;
 
-	free_stack_recursive(head->next);
-	free(head);
+	while (current != NULL)
+	{
+		free_stack_while(current->next);
+		free(current->prev);
+		current = current->next;
+	}
 }
-
 /**
- * free_list - frees a list.
+ * free_stack - frees a list.
  * @head: a pointer to the first node.
  *
  * Return: void.
@@ -26,7 +28,7 @@ void free_stack(stack_t *head)
 	if (head == NULL)
 		return;
 
-	free_stack_recursive(head->next);
+	free_stack_while(head->next);
 	free(head->prev);
 	free(head);
 }
